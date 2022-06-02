@@ -24,6 +24,10 @@ canvas.addEventListener("mouseup", function () {
   mouse.click = false;
 });
 //Player
+const playerLeft = new Image();
+playerLeft.src = 'assets/img/fish_swim_left.png';
+const playerRight = new Image();
+playerRight.src = 'assets/img/fish_swim_right.png';
 class Player {
   constructor() {
     this.x = canvas.width / 2;
@@ -88,6 +92,9 @@ class Bubble {
     ctx.fill();
     ctx.closePath();
     ctx.stroke();
+
+    ctx.drawImage(playerLeft, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight,
+        this.spriteWidth, this.spriteHeight,this.x, this.y, this.spriteWidth/4, this.spriteHeight/4);
   }
 }
 const bubblePop1 = document.createElement("audio");
