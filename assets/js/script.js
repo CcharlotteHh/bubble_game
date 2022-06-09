@@ -24,10 +24,6 @@ canvas.addEventListener("mouseup", function () {
   mouse.click = false;
 });
 //Player
-const playerLeft = new Image();
-playerLeft.src = 'assets/img/fish_swim_left.png';
-const playerRight = new Image();
-playerRight.src = 'assets/img/fish_swim_right.png';
 class Player {
   constructor() {
     this.x = canvas.width / 2;
@@ -73,11 +69,12 @@ class Bubble {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = canvas.height + 100;
-    this.radius = 50;
+    this.radius = Math.random() * 100;
     this.speed = Math.random() * 5 + 1;
     this.distance;
     this.counted = false;
     this.sound = Math.random() <= 0.5 ? "sound1" : "sound2";
+    this.color = colorArray[Math.floor(Math.random()*3)];
   }
   update() {
     this.y -= this.speed;
@@ -86,17 +83,18 @@ class Bubble {
     this.distance = Math.sqrt(dx * dx + dy * dy);
   }
   draw() {
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = this.color;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
     ctx.stroke();
-
-    ctx.drawImage(playerLeft, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight,
-        this.spriteWidth, this.spriteHeight,this.x, this.y, this.spriteWidth/4, this.spriteHeight/4);
   }
 }
+
+const colorArray = ["rgba(0,255,255,0.5)","rgba(0,0,255,0.5)","rgb(128,255,170,0.5)"];
+
+
 const bubblePop1 = document.createElement("audio");
 bubblePop1.src = "assets/audio/bubble1.wav";
 
