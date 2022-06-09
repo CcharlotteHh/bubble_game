@@ -7,18 +7,20 @@ canvas.height = 500;
 let score = 0;
 let gameFrame = 0;
 ctx.font = "50px Georgia";
+
+let time = 60;
+
 ///Mouse Interactivity
 let canvasPosition = canvas.getBoundingClientRect(); //messaure current size and position of canvas element
 const mouse = {
   x: canvas.width / 2, //middle of screen horizontally
   y: canvas.height / 2, //middle of screen vertically
-  click: false,
+  click: false,S
 };
 canvas.addEventListener("mousedown", function (event) {
   mouse.click = true;
   mouse.x = event.x - canvasPosition.left;
   mouse.y = event.y - canvasPosition.top;
-  console.log(mouse.x, mouse.y); //console logs mouseposition inside of canvas
 });
 canvas.addEventListener("mouseup", function () {
   mouse.click = false;
@@ -138,7 +140,10 @@ function animate() {
   player.draw();
   ctx.fillStyle = "black";
   ctx.fillText("score: " + score, 10, 50);
+  ctx.fillText("time: " + time, 450, 50);
   gameFrame++;
   requestAnimationFrame(animate);
 }
 animate();
+
+
