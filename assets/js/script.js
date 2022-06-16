@@ -8,19 +8,21 @@ let score = 0;
 let gameFrame = 0;
 ctx.font = "50px Georgia";
 
-let time = 60;
+let startTime = null;
 
 ///Mouse Interactivity
 let canvasPosition = canvas.getBoundingClientRect(); //messaure current size and position of canvas element
 const mouse = {
   x: canvas.width / 2, //middle of screen horizontally
   y: canvas.height / 2, //middle of screen vertically
-  click: false,S
+  click: false,
+  
 };
 canvas.addEventListener("mousedown", function (event) {
   mouse.click = true;
   mouse.x = event.x - canvasPosition.left;
   mouse.y = event.y - canvasPosition.top;
+  
 });
 canvas.addEventListener("mouseup", function () {
   mouse.click = false;
@@ -133,17 +135,37 @@ function handleBubbles() {
 }
 
 //animation loop
-function animate() {
+function animate(timeStamp) {
+  if(!startTime){
+    startTime = timeStamp;
+  }
+
+  const runTime = timeStamp - startTime;
+  const seconds = Number.parseInt(runTime /1000);
+  if (seconds === 10 ){
+    	document.getElementById("overlay").style.display = "block";
+      
+      var scoreBoard = document.getElementById('scoreBoard')
+      scoreBoard.innerHTML = `score: ${score}`;
+     
+      
+  }
+  else{
+
+  }
+
+  console.log(seconds);
+
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   handleBubbles();
   player.update();
   player.draw();
   ctx.fillStyle = "black";
   ctx.fillText("score: " + score, 10, 50);
-  ctx.fillText("time: " + time, 450, 50);
+  ctx.fillText("time: " + (60 - seconds) , 450, 50);
   gameFrame++;
   requestAnimationFrame(animate);
 }
-animate();
+requestAnimationFrame(animate);
 
 
