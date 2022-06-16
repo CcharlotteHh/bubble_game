@@ -4,6 +4,7 @@ const ctx = canvas.getContext("2d"); //2d drawing method
 canvas.width = 800;
 canvas.height = 500;
 
+let playerName = prompt('Player, what is your name?')
 let score = 0;
 let gameFrame = 0;
 ctx.font = "50px Georgia";
@@ -150,10 +151,8 @@ function animate(timeStamp) {
       var scoreBoard = document.getElementById('scoreBoard')
       scoreBoard.innerHTML = `score: ${score}`;
 
-      
-
-      //var highScore = document.getElementById('highScore')
-      //highScore.innerHTML = `Highscore: ${}`;
+      var highScore = document.getElementById('highScore')
+      highScore.innerHTML = `Highscore: ${score}`;
      
       
   }
@@ -161,7 +160,6 @@ function animate(timeStamp) {
 
   }
 
-  console.log(seconds);
 
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   handleBubbles();
@@ -185,4 +183,11 @@ function startGame(){
   document.getElementById("overlay").style.display = "none";
 }
 
+save_score = () => {
+  if (document.getElementById("highScore").value === "") {
+      document.getElementById("highScore").style.border = "1px solid red";
+      document.getElementById("highScore").placeholder = "Vul een naam in aub";
+      return false;
+  }
+}
 
