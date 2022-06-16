@@ -10,6 +10,7 @@ ctx.font = "50px Georgia";
 
 let startTime = null;
 
+
 ///Mouse Interactivity
 let canvasPosition = canvas.getBoundingClientRect(); //messaure current size and position of canvas element
 const mouse = {
@@ -142,8 +143,9 @@ function animate(timeStamp) {
 
   const runTime = timeStamp - startTime;
   const seconds = Number.parseInt(runTime /1000);
-  if (seconds === 10 ){
+  if (seconds === 5 ){
     	document.getElementById("overlay").style.display = "block";
+      document.getElementById('restartButton').addEventListener('click', startGame);
       
       var scoreBoard = document.getElementById('scoreBoard')
       scoreBoard.innerHTML = `score: ${score}`;
@@ -167,5 +169,14 @@ function animate(timeStamp) {
   requestAnimationFrame(animate);
 }
 requestAnimationFrame(animate);
+
+
+
+function startGame(){
+  startTime = null;
+  score = 0;
+  document.getElementById('restartButton').removeEventListener('click', startGame);
+  document.getElementById("overlay").style.display = "none";
+}
 
 
