@@ -149,6 +149,11 @@ function animate(timeStamp) {
       
       var scoreBoard = document.getElementById('scoreBoard')
       scoreBoard.innerHTML = `score: ${score}`;
+
+      
+
+      //var highScore = document.getElementById('highScore')
+      //highScore.innerHTML = `Highscore: ${}`;
      
       
   }
@@ -175,6 +180,7 @@ requestAnimationFrame(animate);
 function startGame(){
   startTime = null;
   score = 0;
+  gameFrame = 0;
   document.getElementById('restartButton').removeEventListener('click', startGame);
   document.getElementById("overlay").style.display = "none";
 }
