@@ -16,6 +16,9 @@
         <div id="highScore"></div>
         <div id="name"></div>
         <button id="restartButton">Restart</button>
+        <form action="insert.php" method="post">
+            <input type="submit" value="submit" name="savescore"/>save score</input>
+        </form>
     </div>
 
     <script src="assets/js/script.js"></script>

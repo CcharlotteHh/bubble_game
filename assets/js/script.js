@@ -153,6 +153,8 @@ function animate(timeStamp) {
 
       var highScore = document.getElementById('highScore')
       highScore.innerHTML = `Highscore: ${score}`;
+
+     
      
       
   }
