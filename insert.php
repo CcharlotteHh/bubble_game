@@ -1,11 +1,24 @@
 <?php
 include_once 'databaseinfo.php';
 
-$sql = 'INSERT INTO score (score, player_id) VALUES (rand(), 2)';
+$scoreValue = $_POST['scoreValue'];
+$playerName = $_POST['playerName'];
+
+$sql = 'INSERT INTO score (score) VALUES ('.$scoreValue.')';
 
 if (isset($_POST['savescore'])) {
   if ($conn->query($sql) === TRUE) {
-    header('Location: index.php');
+    //header('Location: index.php');
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+$sql = 'INSERT INTO player (name, register_date) VALUES ('.$playerName.', curdate())';
+
+if (isset($_POST['savescore'])) {
+  if ($conn->query($sql) === TRUE) {
+    //header('Location: index.php');
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }

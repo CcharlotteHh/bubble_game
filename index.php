@@ -12,11 +12,13 @@
 
     </canvas>
     <div id="overlay">
-        <div id="scoreBoard"></div>
+    <div id="scoreBoard"></div>
         <div id="highScore"></div>
         <div id="name"></div>
         <button id="restartButton">Restart</button>
         <form action="insert.php" method="post">
+            <input placeholder="playerName" type="text" name="playerName" id="playerName">
+            <input type="text" value="" name="scoreValue"id="scoreValue"></input>
             <input type="submit" value="submit" name="savescore"/>save score</input>
         </form>
     </div>

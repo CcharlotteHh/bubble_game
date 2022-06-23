@@ -34,3 +34,7 @@ body{
 #overlay span{
     display: block;
 }
+
+#scoreValue{
+    display:none;
+}
