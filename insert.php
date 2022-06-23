@@ -14,7 +14,7 @@ if (isset($_POST['savescore'])) {
   }
 }
 
-$sql = 'INSERT INTO player (name, register_date) VALUES ('.$playerName.', curdate())';
+$sql = 'INSERT INTO player (name, register_date) VALUES ("'.$playerName.'", curdate())';
 
 if (isset($_POST['savescore'])) {
   if ($conn->query($sql) === TRUE) {
