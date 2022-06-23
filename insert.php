@@ -18,7 +18,7 @@ $sql = 'INSERT INTO player (name, register_date) VALUES ("'.$playerName.'", curd
 
 if (isset($_POST['savescore'])) {
   if ($conn->query($sql) === TRUE) {
-    //header('Location: index.php');
+    header('Location: index.php');
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }

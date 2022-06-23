@@ -105,6 +105,9 @@ bubblePop1.src = "assets/audio/bubble1.wav";
 const bubblePop2 = document.createElement("audio");
 bubblePop2.src = "assets/audio/bubble2.ogg";
 
+const audio3 = document.createElement("audio3");
+audio3.src = "assets/audio/click.mp3";
+
 function handleBubbles() {
   if (gameFrame % 50 == 0) {
     bubblesArray.push(new Bubble());
@@ -142,9 +145,10 @@ function animate(timeStamp) {
 
   const runTime = timeStamp - startTime;
   const seconds = Number.parseInt(runTime /1000);
-  if (seconds === 5 ){
+  if (seconds === 60 ){
     	document.getElementById("overlay").style.display = "block";
       document.getElementById('restartButton').addEventListener('click', startGame);
+      document.getElementById('restartButton').addEventListener('click', playclick);
       
       var scoreBoard = document.getElementById('scoreBoard')
       scoreBoard.innerHTML = `score: ${score}`;
@@ -176,7 +180,9 @@ function animate(timeStamp) {
 }
 requestAnimationFrame(animate);
 
-
+function playclick() {
+  audio3.play
+}
 
 function startGame(){
   startTime = null;

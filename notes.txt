@@ -1,5 +1,0 @@
-nog toevoegen.
-naam voordat spel begin (naar database)
-spel stop na 1 min.(tijd weergeven)
-score na die tijd is score die naar database gaat
-knop om spel opnieuw te beginnen
